@@ -12,7 +12,7 @@
 <!--      cat & wave pic-->
       <div>
         <img  style="width:100%;" class="wave" src="@/assets/wave.png">
-        <img class="dog" src="@/assets/cat1.png" :style="'margin-left:' + this.catX +'px'">
+        <img class="dog" src="@/assets/cat1.png" style="">
       </div>
 
     </section>
@@ -25,18 +25,6 @@ import IconIc from "@/components/candies/IconIc.vue";
 export default {
   name: "LogoComponent",
   components: {IconIc},
-  data(){
-    return {
-        catX: window.outerWidth/10
-    }
-  },
-  mounted() {
-    window.addEventListener('resize', ()=>{
-      if(window.outerWidth < 1430){
-        this.catX= window.outerWidth/25
-      }
-    })
-  }
 }
 </script>
 
@@ -54,7 +42,9 @@ export default {
  {
    width:600px;
 
-   margin-top:-500px;
+  position:absolute;
+   top:0;
+   right:0;
 
  }
  .logo h1{
@@ -92,7 +82,10 @@ export default {
  @media(max-width: 900px){
    img[class="dog"]
    {
-     right:-170px;
+     display:none;
+   }
+   .wave{
+     display:none;
    }
  }
 </style>
