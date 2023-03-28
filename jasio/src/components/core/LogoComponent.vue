@@ -41,8 +41,8 @@ export default {
  img[class="dog"]
  {
    width:600px;
-
-  position:absolute;
+   pointer-events: none;
+   position:absolute;
    top:0;
    right:0;
 
