@@ -1,0 +1,7 @@
+{"$$indexCreated":{"fieldName":"id","unique":true,"sparse":false}}
+{"createdAt":1680011621278,"updatedAt":1680011638462,"id":1,"name":"Maly geremek","price":1000,"description":"Moze zostac twoim przyjacielem :)","photoUrl":"97dfbb33-be2a-4768-8155-28ae3cd68482.png","username":"mat","_id":1}
+{"createdAt":1680011621278,"updatedAt":1680011825105,"id":1,"name":"Maly geremek","price":1000,"description":"Moze zostac twoim przyjacielem :)","photoUrl":"97dfbb33-be2a-4768-8155-28ae3cd68482.png","username":"mat","_id":1}
+{"createdAt":1680011621278,"updatedAt":1680011838239,"id":1,"name":"Maly geremek","price":1000,"description":"Moze zostac Twoim przyjacielem :)","photoUrl":"97dfbb33-be2a-4768-8155-28ae3cd68482.png","username":"mat","_id":1}
+{"$$deleted":true,"_id":1}
+{"price":350,"name":"Klatka 'PupilCage'","description":"Klatka dla duzych i wymagajacych ptakow","photoUrl":"cc4f6539-be17-4377-965f-2959bfede9af.jpg","username":"mat","createdAt":1680012549053,"updatedAt":1680012549053,"id":2,"_id":2}
+{"price":450,"name":"Buda z koscia","description":"Fajna budka, ktora ozdobi Twoj ogrod i ucieszy pupila","photoUrl":"6e0478f8-2911-4581-97bd-67758cadb860.jpg","username":"mat","createdAt":1680012637775,"updatedAt":1680012637775,"id":3,"_id":3}
