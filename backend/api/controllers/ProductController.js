@@ -1,5 +1,5 @@
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
 module.exports = {
   async getAllProducts(req, res) {
     try {
@@ -66,10 +66,17 @@ module.exports = {
     req.file('image').upload({
       maxBytes: 100000000, // 10MB limit
       dirname: require('path').resolve(sails.config.appPath, 'assets/images')
-    }, function(err, uploadedFiles) {
-      if (err) return res.serverError(err);
+    }, (err, uploadedFiles) => {
+      if (err) {return res.serverError(err);}
 
-      return res.json(uploadedFiles[0].fd.split('/').pop());
+      let windowsFan;
+
+      if (uploadedFiles[0].fd.includes('/')) {
+        windowsFan = uploadedFiles[0].fd.split('/').pop();
+      } else if (uploadedFiles[0].fd.includes('\\')) {
+        windowsFan = uploadedFiles[0].fd.split('\\').pop();
+      }
+      return res.json(windowsFan);
     });
   },
 
