@@ -11,7 +11,7 @@
       </div>
 <!--      cat & wave pic-->
       <div>
-        <img  class="wave" src="@/assets/wave.svg">
+        <img  style="width:100%;" class="wave" src="@/assets/wave.png">
         <img class="dog" src="@/assets/cat1.png" :style="'margin-left:' + this.catX +'px'">
       </div>
 
