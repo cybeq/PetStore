@@ -36,3 +36,4 @@ ________
 ### CRUD application with the use of VUE and Sails.js on the theme: Pet house shop
 
 ---------
+![img.png](img.png)
