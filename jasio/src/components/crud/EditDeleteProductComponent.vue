@@ -3,7 +3,7 @@
     <div class="add-product-container" :style="`transform: translateX(${this.translateX}px)`">
 
       <label>Wybierz produkt</label>
-      <select v-model="selectedProduct">
+      <select v-model="selectedProduct" @change="selectProduct()">
         <option v-for="all in this.products" :key="all.id" :value="all.id">{{all.name}}</option>
       </select>
 
@@ -71,6 +71,12 @@ export default {
       }).catch(err=>{
         console.log(err)
       })
+    },
+    selectProduct(){
+      const prod = this.products.find(product => product.id === this.selectedProduct)
+      this.description = prod.description
+      this.price = prod.price
+      this.id = prod.id
     },
     deleteProduct(){
       ProductService.deleteProduct(this.id).then(res=>{
