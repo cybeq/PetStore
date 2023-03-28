@@ -2,7 +2,8 @@
 
 #### Start sails.js server
 ````
-cd ./backend 
+cd ./backend
+npm i 
 npm start
 ````
 #### After loading the sails server you will be able to use the built VUE project directly from the server router
@@ -12,6 +13,7 @@ port 1337
 #### You can run the VUE application in developer mode
 ````
 cd ./jasio
+npm i
 npm run serve
 ````
 
