@@ -1,18 +1,19 @@
 <template>
+  <div id="shakable">
   <div class="add-product-container" :style="`transform: translateX(${this.translateX}px)`">
     <label>Nazwa produktu</label>
-      <input type="text" v-model="this.name">
+      <input type="text" v-model="this.name" placeholder="wszystkie pola wymagane">
     <label>Opis</label>
-      <input type="text" style="height:200px" v-model="this.description">
+    <textarea style="height:200px" v-model="this.description" placeholder="wszystkie pola wymagane"></textarea>
     <label>Cena</label>
-      <input type="number" v-model="this.price">
+      <input type="number" v-model="this.price"  placeholder="wszystkie pola musza byc wypelnione">
     <label>Zdjęcie produktu</label>
       <input type="file" accept="image/gif, image/jpeg, image/png" @change="appendImage">
     <div v-if="this.loading">Ladowanie</div>
   </div>
   <PhotoPreviewComponent v-if="this.photo" :photo="this.photo"></PhotoPreviewComponent>
   <button class="login_button" @click="addProduct()">Dodaj</button>
-
+  </div>
 </template>
 
 <script>
@@ -20,6 +21,7 @@ import PhotoPreviewComponent from "@/components/widgets/PhotoPreviewComponent.vu
 
 const productService = require('@/services/ProductService');
 import axios from "axios";
+import router from "../../../config/router";
 export default {
   name: "AddProductComponent",
   components: {PhotoPreviewComponent},
@@ -29,7 +31,7 @@ export default {
       name:'',
       description:'',
       price:0,
-      photoUrl:'/',
+      photoUrl:'',
       photo:undefined,
       uploaded:false,
       loading:false
@@ -56,6 +58,7 @@ export default {
             this.photoUrl = response.data;
           })
           .catch(error => {
+            this.shake()
             console.log(error);
           });
     },
@@ -67,8 +70,23 @@ export default {
       formData.append('description', this.description);
       formData.append('photoUrl', this.photoUrl);
       productService.createProduct(formData).then(res=>{
+        if(res.error){
+          this.shake()
+          console.log(res)
+        }
+        if(res.success){
+          router.push('/');
+          location.reload();
+        }
         console.log(res)
+      }).catch(err=>{
+        this.shake();
+        console.log(err)
       })
+    },
+    shake(){
+      document.getElementById('shakable').className="shake";
+      setTimeout(()=>{ document.getElementById('shakable').className=""},1000)
     }
   }
 }
@@ -79,7 +97,7 @@ export default {
   margin-top:20px;
   transition: transform 1s ease;
 }
-.add-product-container input{
+.add-product-container input, textarea{
   display:block;
   width:100%;
   padding:3px;
@@ -93,5 +111,19 @@ export default {
   outline:none;
   background: #ffffff99;
 
+}
+.shake{
+  animation: shake 1s ease;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translateX(-10px);
+  }
+  20%, 40%, 60%, 80%, 100% {
+    transform: translateX(10px);
+  }
 }
 </style>

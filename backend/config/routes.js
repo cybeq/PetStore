@@ -26,6 +26,8 @@ module.exports.routes = {
 
   // // route na produkcji(socket dziala na produkcji)
   // '/*':{view:'index'},
+
+  'GET /api/download/:photo/raw':'ProductController.getPhoto',
   'POST /api/upload':'ProductController.uploadPhoto',
   'POST /api/user':'AuthController.login',
   'GET /api/user':'AuthController.userName',

@@ -3,8 +3,10 @@
     <IconIc @click="close()" svg-path="x-circle" fill-color="#fff" height=35 width=35 style="display:block; cursor:pointer; margin-bottom:40px;"></IconIc>
     <h1>PANEL</h1>
     <div class="white-board" style="margin-bottom:30px;"></div>
-    <button v-if="!this.addProduct" @click="this.addProduct=true" class="login_button">Dodaj produkt</button>
+    <button v-if="!this.addProduct && !this.editProduct" @click="this.addProduct=true; this.editProduct=false" class="login_button">Dodaj produkt</button>
+    <button v-if="!this.addProduct && !this.editProduct" @click="this.addProduct=false; this.editProduct = true" class="login_button" style="margin-top:8px;">Edytuj/Usuń produkt</button>
     <AddProductComponent v-if="this.addProduct"></AddProductComponent>
+    <EditDeleteProductComponent v-if="this.editProduct"></EditDeleteProductComponent>
   </div>
 </template>
 
@@ -12,10 +14,11 @@
 import IconIc from "@/components/candies/IconIc.vue";
 import router from "../../../config/router";
 import AddProductComponent from "@/components/crud/AddProductComponent.vue";
+import EditDeleteProductComponent from "@/components/crud/EditDeleteProductComponent.vue";
 
 export default {
   name: "PanelComponent",
-  components: {AddProductComponent, IconIc},
+  components: {EditDeleteProductComponent, AddProductComponent, IconIc},
   data(){
     return{
       width:0,
@@ -23,6 +26,7 @@ export default {
       name:"mat",
       password:"1234",
       addProduct:false,
+      editProduct:false,
       updateProduct:false,
       deleteProduct:false
     }

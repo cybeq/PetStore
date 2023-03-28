@@ -25,7 +25,7 @@ module.exports = {
                 headers: {
                 'Content-Type': 'application/json'
             },
-            body:body
+            body:JSON.stringify(body)
         })
             .then(response => response.json())
             .then(data => {
@@ -42,10 +42,10 @@ module.exports = {
         })
             .then(response => response.json())
             .then(data => {
-                return data;
+                return {success: data};
             })
             .catch(error => {
-                return error;
+                return {error:error};
             });
     },
     deleteProduct(id){
@@ -54,10 +54,10 @@ module.exports = {
         })
             .then(response => response.json())
             .then(data => {
-                return data;
+                return {success: data};
             })
             .catch(error => {
-                console.error(error);
+                return {error};
             });
     },
     uploadPhoto(formData){

@@ -29,7 +29,7 @@ module.exports = {
       res.ok(product);
     } catch (err) {
       console.error(err);
-      res.serverError(err);
+      res.error(err);
     }
   },
 
@@ -37,11 +37,11 @@ module.exports = {
     try {
       const product = await ProductService.updateProduct(req.params.id, req.body);
       if (!product) {
-        return res.notFound('Product not found');
+        return res.json({error: 'no product'});
       }
-      res.ok(product);
+      res.json({success: product});
     } catch (err) {
-      res.serverError(err);
+      return res.json({error: err});
     }
   },
 
@@ -49,12 +49,13 @@ module.exports = {
     try {
       const product = await ProductService.deleteProduct(req.params.id);
       if (!product) {
-        return res.notFound('Product not found');
+        return res.json({error:'Product not found'});
       }
       res.ok(product);
-    } catch (err) {
-      res.serverError(err);
+    } catch (error) {
+      res.json({error});
     }
+    res.json({success:'deleted'});
   },
 
   async uploadPhoto(req, res){
@@ -70,5 +71,17 @@ module.exports = {
 
       return res.json(uploadedFiles[0].fd.split('/').pop());
     });
+  },
+
+  async getPhoto(req, res){
+    const photoName = req.param('photo');
+    console.log(photoName);
+    const imagePath = path.resolve(sails.config.appPath, 'assets', 'images', photoName);
+
+    if (fs.existsSync(imagePath)) {
+      res.sendFile(imagePath);
+    } else {
+      return res.notFound();
+    }
   }
 };

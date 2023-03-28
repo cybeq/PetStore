@@ -7,8 +7,6 @@
   <OffersComponent></OffersComponent>
   <ListComponent></ListComponent>
   <FooterComponent></FooterComponent>
-
-  <AsideComponent></AsideComponent>
   <router-view></router-view>
 </template>
 <style>
@@ -51,11 +49,10 @@ import LogoComponent from "@/components/core/LogoComponent.vue";
 import OffersComponent from "@/components/core/OffersComponent.vue";
 import ListComponent from "@/components/core/ListComponent.vue";
 import FooterComponent from "@/components/core/FooterComponent.vue";
-import AsideComponent from "@/components/core/AsideComponent.vue";
+
 export default {
   name: 'App',
   components: {
-    AsideComponent,
     FooterComponent,
     ListComponent,
     OffersComponent,
@@ -67,7 +64,7 @@ export default {
 </script>
 
 <style>
-.login_button{
+.login_button, .cancel_button{
   width:100%;
   padding:8px;
   border:solid white 3px;
@@ -82,7 +79,10 @@ export default {
   background-color: #30bf88;
   border-color:#30bf88;
 }
-
+.cancel_button:hover{
+  background-color: #bf3070;
+  border-color:#bf3070;
+}
 .white-board{
   width:100%;
   height:10px;
