@@ -44,7 +44,7 @@ export default {
 <style scoped>
 .list-container{
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   grid-column-gap: 20px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
